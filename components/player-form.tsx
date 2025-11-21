@@ -13,7 +13,7 @@ interface PlayerFormProps {
     email: string,
     firstName: string,
     lastName: string,
-    remember: boolean
+    contact: boolean
   ) => void;
 }
 
@@ -21,7 +21,7 @@ export default function PlayerForm({ onSubmit }: PlayerFormProps) {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [remember, setRemember] = useState(true);
+  const [contact, setContact] = useState(true);
   const [errors, setErrors] = useState({
     email: "",
     firstName: "",
@@ -73,7 +73,7 @@ export default function PlayerForm({ onSubmit }: PlayerFormProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      onSubmit(email.trim(), firstName.trim(), lastName.trim(), remember);
+      onSubmit(email.trim(), firstName.trim(), lastName.trim(), contact);
     }
   };
 
@@ -162,13 +162,13 @@ export default function PlayerForm({ onSubmit }: PlayerFormProps) {
 
         <div className="flex items-center gap-2">
           <input
-            id="remember"
+            id="contact"
             type="checkbox"
-            checked={remember}
-            onChange={(e) => setRemember(e.target.checked)}
+            checked={contact}
+            onChange={(e) => setContact(e.target.checked)}
             className="h-4 w-4 accent-primary"
           />
-          <Label htmlFor="remember" className="text-sm font-medium select-none">
+          <Label htmlFor="contact" className="text-sm font-medium select-none">
             J'autorise Zenika à me recontacter à des fins informatives ou de
             recrutement.
           </Label>

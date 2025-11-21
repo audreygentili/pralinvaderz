@@ -16,6 +16,7 @@ import {
   drawPowerUp,
   checkPowerUpPlayerCollision,
 } from "@/lib/game-utils";
+import { saveScore } from "@/lib/appwrite";
 
 type Position = { x: number; y: number };
 type Enemy = Position & { row: number; col: number };
@@ -89,6 +90,28 @@ export default function Game() {
       setPlayerData(JSON.parse(savedPlayer));
     }
   }, []);
+
+  // Save score to Appwrite when game ends
+  useEffect(() => {
+    if (gameState === "gameOver" && score > 0) {
+      const savedPlayer = localStorage.getItem("playerInfos");
+      if (savedPlayer) {
+        try {
+          const playerInfo = JSON.parse(savedPlayer);
+          if (playerInfo.$id) {
+            saveScore(
+              playerInfo.$id,
+              highScore,
+            ).catch((error) => {
+              console.error("Failed to save score to Appwrite:", error);
+            });
+          }
+        } catch (error) {
+          console.error("Failed to parse player info:", error);
+        }
+      }
+    }
+  }, [gameState, score, highScore]);
 
   const applyDifficultyForLevel = (currentLevel: number) => {
     const game = gameRef.current;
