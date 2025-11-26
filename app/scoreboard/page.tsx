@@ -108,8 +108,8 @@ export default function ScoreboardPage() {
     }, []);
 
     return (
-        <main className="min-h-screen px-4 sm:px-6 md:px-6 py-8 sm:py-12 md:py-12">
-            <div className="flex flex-col items-center gap-6 sm:gap-8 w-full max-w-6xl mx-auto">
+        <main className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-6 py-8 sm:py-12 md:py-12">
+            <div className="flex flex-col items-center gap-6 sm:gap-8 w-full max-w-6xl">
                 <div className="text-center space-y-2">
                     <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-primary font-mono text-balance">
                         SCOREBOARD
