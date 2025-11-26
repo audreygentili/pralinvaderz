@@ -67,3 +67,43 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes highlight-up {
+  0% {
+    background-color: rgba(0, 233, 168, 0.3);
+  }
+  30% {
+    background-color: rgba(0, 233, 168, 0.25);
+  }
+  60% {
+    background-color: rgba(0, 233, 168, 0.1);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes highlight-down {
+  0% {
+    background-color: rgba(222, 32, 74, 0.3);
+  }
+  30% {
+    background-color: rgba(222, 32, 74, 0.25);
+  }
+  60% {
+    background-color: rgba(222, 32, 74, 0.1);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@layer utilities {
+  .animate-highlight-up {
+    animation: highlight-up 1.5s ease-out;
+  }
+  
+  .animate-highlight-down {
+    animation: highlight-down 1.5s ease-out;
+  }
+}

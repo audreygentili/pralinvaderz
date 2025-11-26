@@ -3,13 +3,17 @@
 import { useState, useEffect } from "react";
 import Game from "@/components/game";
 import PlayerForm from "@/components/player-form";
+import {createOrUpdatePlayer} from "@/lib/appwrite";
+import Link from "next/link";
+import {Button} from "@/components/ui/button";
 
 export default function Page() {
   const [playerData, setPlayerData] = useState<{
-    email: string;
-    firstName: string;
-    lastName: string;
-    remember: boolean;
+      email: string;
+      firstName: string;
+      lastName: string;
+      contact: boolean;
+      $id: string;
   } | null>(null);
 
   useEffect(() => {
@@ -19,20 +23,31 @@ export default function Page() {
     }
   }, []);
 
-  const handlePlayerSubmit = (
+    const handlePlayerSubmit = async (
     email: string,
     firstName: string,
     lastName: string,
-    remember: boolean
+    contact: boolean
   ) => {
-    const data = { email, firstName, lastName, remember };
-    localStorage.setItem("playerInfos", JSON.stringify(data));
+        const $id = await createOrUpdatePlayer({
+            email,
+            firstName,
+            lastName,
+            contact,
+        });
+
+        const data = {email, firstName, lastName, contact, $id};
+
+        localStorage.setItem("playerInfos", JSON.stringify(data));
+
     setPlayerData(data);
   };
 
   return (
     <main className="min-h-screen px-4 sm:px-6 md:px-6 py-8 sm:py-12 md:py-12">
-      {!playerData ? <PlayerForm onSubmit={handlePlayerSubmit} /> : <Game />}
+        <div className="flex flex-col items-center gap-4">
+            {!playerData ? <PlayerForm onSubmit={handlePlayerSubmit}/> : <Game/>}
+        </div>
     </main>
   );
 }
