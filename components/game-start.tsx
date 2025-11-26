@@ -15,7 +15,8 @@ export default function GameStart({ onStart }: GameStartProps) {
         </h2>
         <div className="space-y-2 text-xs sm:text-sm md:text-base text-muted-foreground">
           <p className="font-mono sm:hidden">
-            Slide pour te déplacer et appuie pour tirer
+            Slide pour te déplacer et tirer, attention aux projectiles des
+            pralines !
           </p>
         </div>
         <Button

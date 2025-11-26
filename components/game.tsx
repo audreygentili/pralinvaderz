@@ -99,10 +99,7 @@ export default function Game() {
         try {
           const playerInfo = JSON.parse(savedPlayer);
           if (playerInfo.$id) {
-            saveScore(
-              playerInfo.$id,
-              highScore,
-            ).catch((error) => {
+            saveScore(playerInfo.$id, highScore).catch((error) => {
               console.error("Failed to save score to Appwrite:", error);
             });
           }
@@ -517,7 +514,7 @@ export default function Game() {
       <div className="text-center text-xs sm:text-sm text-muted-foreground max-w-md py-2">
         <p className="font-mono text-pretty">
           {level == 1
-            ? "Aide le Zenikanard à attraper toutes les pralines"
+            ? "Tire sur les pralines tout en évitant leurs projectiles"
             : "Attrape les boosts jaunes pour tirer plus vite"}
         </p>
       </div>

@@ -186,7 +186,7 @@ export default function PlayerForm({ onSubmit }: PlayerFormProps) {
 
       <div className="text-center text-xs sm:text-sm text-muted-foreground">
         <p className="font-mono text-pretty">
-          Aide le Zenikanard à attraper toutes les pralines
+          Tire sur les pralines tout en évitant leurs projectiles
         </p>
       </div>
     </div>
