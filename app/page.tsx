@@ -3,17 +3,15 @@
 import { useState, useEffect } from "react";
 import Game from "@/components/game";
 import PlayerForm from "@/components/player-form";
-import {createOrUpdatePlayer} from "@/lib/appwrite";
-import Link from "next/link";
-import {Button} from "@/components/ui/button";
+import { createOrUpdatePlayer } from "@/lib/appwrite";
 
 export default function Page() {
   const [playerData, setPlayerData] = useState<{
-      email: string;
-      firstName: string;
-      lastName: string;
-      contact: boolean;
-      $id: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    contact: boolean;
+    $id: string;
   } | null>(null);
 
   useEffect(() => {
@@ -23,31 +21,31 @@ export default function Page() {
     }
   }, []);
 
-    const handlePlayerSubmit = async (
+  const handlePlayerSubmit = async (
     email: string,
     firstName: string,
     lastName: string,
     contact: boolean
   ) => {
-        const $id = await createOrUpdatePlayer({
-            email,
-            firstName,
-            lastName,
-            contact,
-        });
+    const $id = await createOrUpdatePlayer({
+      email,
+      firstName,
+      lastName,
+      contact,
+    });
 
-        const data = {email, firstName, lastName, contact, $id};
+    const data = { email, firstName, lastName, contact, $id };
 
-        localStorage.setItem("playerInfos", JSON.stringify(data));
+    localStorage.setItem("playerInfos", JSON.stringify(data));
 
     setPlayerData(data);
   };
 
   return (
     <main className="min-h-screen px-4 sm:px-6 md:px-6 py-8 sm:py-12 md:py-12">
-        <div className="flex flex-col items-center gap-4">
-            {!playerData ? <PlayerForm onSubmit={handlePlayerSubmit}/> : <Game/>}
-        </div>
+      <div className="flex flex-col items-center gap-4">
+        {!playerData ? <PlayerForm onSubmit={handlePlayerSubmit} /> : <Game />}
+      </div>
     </main>
   );
 }
