@@ -144,7 +144,7 @@ export default function ScoreboardPage() {
           <>
             <h2 className=" text-center text-md sm:text-xl text-foreground font-mono">
               Fais le meilleur score pour te hisser en haut du classement et
-              remporter un lot ! Résultat annoncé à <strong>19h30</strong>...
+              remporter un lot ! Résultat annoncé à <strong>19h00</strong>...
               <br />
               Tire sur les pralines tout en évitant leurs projectiles. Récupère
               les boosts jaunes pour tirer plus vite !
