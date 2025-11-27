@@ -2,8 +2,8 @@
 
 import { useEffect, useState, useRef } from "react";
 import { getScores } from "@/lib/appwrite";
-import { QRCodeSVG } from "qrcode.react";
 import zenika from "@/assets/zenika.svg";
+import qrcode from "@/assets/qrcode.png";
 
 interface ScoreWithPlayer {
   $id: string;
@@ -238,8 +238,8 @@ export default function ScoreboardPage() {
                   <p className="text-md sm:text-xl font-mono text-muted-foreground text-center">
                     Scanne pour jouer !
                   </p>
-                  <div className="p-3 bg-white rounded-lg">
-                    <QRCodeSVG value={homeUrl} size={250} level="H" />
+                  <div className="p-3 bg-white rounded-lg w-[340px]">
+                    <img src={qrcode.src} />
                   </div>
                 </div>
               )}
